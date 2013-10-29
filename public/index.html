@@ -1,0 +1,118 @@
+<html ng-app="Hearthstone">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+        <script src="main.js">
+        </script>
+    </head>
+    <body  ng-controller="CardsCtrl">
+            <!--[if lt IE 8]>
+                <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+
+            <!-- Add your site or application content here -->
+            <div class="row">
+                <div class="col-md-12">
+                    <form role="form">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <header>
+                                    <h4>
+                                        Class
+                                    </h4>
+                                </header>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="classes" ng-click="setClass()">
+                                        All            
+                                    </label>
+                                </div>
+                                <div class="radio" ng-repeat="theClass in classes">
+                                    <label>
+                                        <input type="radio" name="classes" ng-click="setClass(theClass)">
+                                        {{theClass}}           
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <header>
+                                    <h4>
+                                        Type
+                                    </h4>
+                                </header>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="types" ng-click="setType()">
+                                        All            
+                                    </label>
+                                </div>
+                                <div class="radio" ng-repeat="theType in types">
+                                    <label>
+                                        <input type="radio" name="classes" ng-click="setType(theType)">
+                                        {{theType}}           
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="search">Search</label>
+                                    <input type="text" ng-model="search" class="form-control" id="search" placeholder="Search">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <p>Click column names to sort</p>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <tr>
+                            <th ng-click="setOrderBy(column)" ng-repeat="column in columns">
+                                {{column}}
+                                <span class="{{getArrowClass(column, sort.descending)}}">
+                            </th>
+                            
+                        </tr>
+                        <tr ng-repeat="card in cards | filter:{ class: theClass, type: theType } | filter:search | orderBy:sort.column:sort.descending">
+                            <td>{{card.name}}</td>
+                             <td>{{card.class}}</td>
+                             <td>
+                                {{card.rarity}}
+                            </td>
+                             <td>
+                                {{card.type}}
+                            </td>
+                             <td>
+                                {{card.race}}
+                            </td>
+                             <td>
+                                {{card.cost}}
+                            </td>
+                             <td>
+                                {{card.attack}}
+                            </td>
+                             <td>
+                                {{card.health}}
+                            </td>
+                             <td>
+                                {{card.description}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    </body>
+</html>
