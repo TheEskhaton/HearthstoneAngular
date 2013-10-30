@@ -1,35 +1,49 @@
 var Hearthstone = angular.module('Hearthstone', []);
+Hearthstone.factory('cardsService',['$http',  function($http){
+    var cardsService = {
+        getCards: function(cb){
+                return $http.get('/cards.json').success(cb);          
+        },
 
-Hearthstone.controller('CardsCtrl', ['$scope', '$http', function ($scope, $http) {
+        cardColumns :  [
+		    'Name',
+		    'Class',
+		    'Rarity',
+            'Type',
+            'Race',
+            'Cost',
+            'Attack',
+            'Health',
+            'Description'
+	    ],
+
+        cardTypes : [
+            'Spell', 
+            'Minion', 
+            'Weapon'
+        ],
+
+        cardClasses: [
+            'Priest',
+            'Druid',
+            'Hunter',
+            'Rogue',
+            'Paladin',
+            'Warrior',
+            'Warlock',
+            'Shaman',
+            'Mage'
+	    ]
+    };
+    
+    return cardsService; 
+}]);
+Hearthstone.controller('CardsCtrl', ['$scope', '$http','cardsService', function ($scope, $http, cardsService) {
 	$scope.sort = {};
-	$scope.columns = [
-		'Name',
-		'Class',
-		'Rarity',
-        'Type',
-        'Race',
-        'Cost',
-        'Attack',
-        'Health',
-        'Description'
-	];
-	$scope.classes = [
-		'Priest',
-		'Druid',
-		'Hunter',
-		'Rogue',
-		'Paladin',
-		'Warrior',
-		'Warlock',
-		'Shaman',
-		'Mage'
-	];
-	$scope.types = [
-		'Spell',
-		'Minion',
-		'Weapon'
-	]
-	$http.get('/cards.json').success(function(data){
+	$scope.columns = cardsService.cardColumns;
+    $scope.types = cardsService.cardTypes;
+    $scope.classes = cardsService.cardClasses;
+    cardsService.getCards(function(data){
 		$scope.cards = data;
 	});
 
