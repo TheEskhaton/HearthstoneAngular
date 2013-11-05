@@ -5,20 +5,12 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
-
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
         <script src="main.js">
         </script>
     </head>
     <body  ng-controller="CardsCtrl">
-            <!--[if lt IE 8]>
-                <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-            <![endif]-->
-
-            <!-- Add your site or application content here -->
             <div class="row">
                 <div class="col-md-12">
                     <form role="form">
@@ -82,7 +74,6 @@
                                 {{column}}
                                 <span class="{{getArrowClass(column, sort.descending)}}">
                             </th>
-                            
                         </tr>
                         <tr ng-repeat="card in cards | filter:{ class: theClass, type: theType } | filter:search | orderBy:sort.column:sort.descending">
                             <td>{{card.name}}</td>
@@ -113,6 +104,5 @@
                 </div>
             </div>
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
     </body>
 </html>
