@@ -62,18 +62,6 @@ Hearthstone.controller('CardsCtrl', ['$scope', '$http','cardsService', function 
             sort.descending = false;
         }
 	};
-	$scope.getArrowClass = function(column, descending){
-		if(column.toLowerCase() == $scope.sort.column){
-			if(descending){
-				//return 'glyphicon-arrow-down';
-			}
-			else{
-				//return 'glyphicon-arrow-up'
-			}
-		}
-
-		return '';
-	};
 }]);
 
 Hearthstone.directive('cardsTable', function(){

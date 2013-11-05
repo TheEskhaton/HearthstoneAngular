@@ -2,7 +2,6 @@
     <tr>
         <th ng-click="setOrderBy(column)" ng-repeat="column in columns">
             {{column}}
-            <span class="{{getArrowClass(column, sort.descending)}}">
         </th>
     </tr>
     <tr ng-repeat="card in cards | filter:{ class: theClass, type: theType } | filter:search | orderBy:sort.column:sort.descending">
