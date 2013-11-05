@@ -13,94 +13,13 @@
     <body  ng-controller="CardsCtrl">
             <div class="row">
                 <div class="col-md-12">
-                    <form role="form">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <header>
-                                    <h4>
-                                        Class
-                                    </h4>
-                                </header>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="classes" ng-click="setClass()">
-                                        All            
-                                    </label>
-                                </div>
-                                <div class="radio" ng-repeat="theClass in classes">
-                                    <label>
-                                        <input type="radio" name="classes" ng-click="setClass(theClass)">
-                                        {{theClass}}           
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <header>
-                                    <h4>
-                                        Type
-                                    </h4>
-                                </header>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="types" ng-click="setType()">
-                                        All            
-                                    </label>
-                                </div>
-                                <div class="radio" ng-repeat="theType in types">
-                                    <label>
-                                        <input type="radio" name="types" ng-click="setType(theType)">
-                                        {{theType}}           
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="search">Search</label>
-                                    <input type="text" ng-model="search" class="form-control" id="search" placeholder="Search">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    <filtering-form></filtering-form> 
                 </div>
             </div>
             <p>Click column names to sort</p>
             <div class="row">
                 <div class="col-md-12">
-                    <table class="table">
-                        <tr>
-                            <th ng-click="setOrderBy(column)" ng-repeat="column in columns">
-                                {{column}}
-                                <span class="{{getArrowClass(column, sort.descending)}}">
-                            </th>
-                        </tr>
-                        <tr ng-repeat="card in cards | filter:{ class: theClass, type: theType } | filter:search | orderBy:sort.column:sort.descending">
-                            <td>{{card.name}}</td>
-                             <td>{{card.class}}</td>
-                             <td>
-                                {{card.rarity}}
-                            </td>
-                             <td>
-                                {{card.type}}
-                            </td>
-                             <td>
-                                {{card.race}}
-                            </td>
-                             <td>
-                                {{card.cost}}
-                            </td>
-                             <td>
-                                {{card.attack}}
-                            </td>
-                             <td>
-                                {{card.health}}
-                            </td>
-                             <td>
-                                {{card.description}}
-                            </td>
-                        </tr>
-                    </table>
+                    <cards-table></cards-table>
                 </div>
             </div>
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

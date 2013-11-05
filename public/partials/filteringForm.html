@@ -1,0 +1,50 @@
+<form role="form">
+    <div class="row">
+        <div class="col-md-4">
+            <header>
+                <h4>
+                    Class
+                </h4>
+            </header>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="classes" ng-click="setClass()">
+                    All            
+                </label>
+            </div>
+            <div class="radio" ng-repeat="theClass in classes">
+                <label>
+                    <input type="radio" name="classes" ng-click="setClass(theClass)">
+                    {{theClass}}           
+                </label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <header>
+                <h4>
+                    Type
+                </h4>
+            </header>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="types" ng-click="setType()">
+                    All            
+                </label>
+            </div>
+            <div class="radio" ng-repeat="theType in types">
+                <label>
+                    <input type="radio" name="types" ng-click="setType(theType)">
+                    {{theType}}           
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="search">Search</label>
+                <input type="text" ng-model="search" class="form-control" id="search" placeholder="Search">
+            </div>
+        </div>
+    </div>
+</form>

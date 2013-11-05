@@ -1,0 +1,34 @@
+<table class="table">
+    <tr>
+        <th ng-click="setOrderBy(column)" ng-repeat="column in columns">
+            {{column}}
+            <span class="{{getArrowClass(column, sort.descending)}}">
+        </th>
+    </tr>
+    <tr ng-repeat="card in cards | filter:{ class: theClass, type: theType } | filter:search | orderBy:sort.column:sort.descending">
+        <td>{{card.name}}</td>
+         <td>{{card.class}}</td>
+         <td>
+            {{card.rarity}}
+        </td>
+         <td>
+            {{card.type}}
+        </td>
+         <td>
+            {{card.race}}
+        </td>
+         <td>
+            {{card.cost}}
+        </td>
+         <td>
+            {{card.attack}}
+        </td>
+         <td>
+            {{card.health}}
+        </td>
+         <td>
+            {{card.description}}
+        </td>
+    </tr>
+</table>
+

@@ -76,3 +76,16 @@ Hearthstone.controller('CardsCtrl', ['$scope', '$http','cardsService', function 
 	};
 }]);
 
+Hearthstone.directive('cardsTable', function(){
+    return {
+        restrict: 'E',
+        templateUrl : '/partials/cardsTable.html'
+    }
+});
+Hearthstone.directive('filteringForm', function(){
+    return {
+        restrict: 'E', 
+        templateUrl: '/partials/filteringForm.html'
+    }
+});
+
